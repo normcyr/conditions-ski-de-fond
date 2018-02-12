@@ -1,0 +1,20 @@
+# Liste des parcs avec informations à extraire
+
+- Mont-Royal:
+    nom: Parc du Mont-Royal
+    id: 81
+- Bois-de-Liesse:
+    nom: Parc-nature du Bois-de-Liesse
+    id: 72
+- Île-Bizard:
+    nom: Parc-nature du Bois-de-l'Île-Bizard
+    id: 73
+- Cap St-Jacques:
+    nom: Parc-nature du Cap-Saint-Jacques
+    id: 74
+- Île-de-la-Visitation:
+    nom: Parc-nature de l'Île-de-la-visitation
+    id: 75
+- Pointe-aux-Prairies:
+    nom: Parc-nature de la Pointe-aux-Prairies
+    id: 82

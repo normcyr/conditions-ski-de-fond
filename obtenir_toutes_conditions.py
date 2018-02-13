@@ -208,18 +208,19 @@ def soupe_pointeprairie(requete):
 def enregistrer_donnees(nom_parc, conditions, resultats):
 
     # créer le dictionnaire resultat et y mettre les conditons de ski pour le parc
-    resultats['parc'].append({nom_parc : conditions})
+    nouveaux_resultats = [conditions]
+    resultats[nom_parc] = nouveaux_resultats
 
     return(resultats)
 
 def creer_fichier_sortie(resultats):
 
     # créer un objet en format json
-    donnees = json.dumps(resultats)
+    #donnees = json.dumps(resultats)
 
     # sauvegarder fichier json
     with open('donnees_skidefond.json', 'w', encoding='utf8') as fichier_sortie:
-        json.dump(donnees, fichier_sortie)
+        json.dump(resultats, fichier_sortie)
 
 def main():
 
@@ -227,7 +228,7 @@ def main():
     fichier_liste_parcs = 'liste_parcs.yml'
     liste_id_parcs = []
     resultats = {}
-    resultats['parc'] = []
+    #resultats['parc'] = []
 
     # numéro de l'activité pour le ski de fond sur le site de la Ville de Montréal
     num_activite = 7

@@ -15,11 +15,8 @@ def trouver_conditions(nom_fichier, nom_parc):
     with open(nom_fichier, 'r') as fichier:
         donnees_json = json.loads(fichier.read())
 
+    conditions = donnees_json[nom_parc]
 
-    print(type(donnees_json))
-    print(donnees_json["parc"]["Parc du Mont-Royal"])
-
-    conditions = []
     return(conditions)
 
 
@@ -29,11 +26,12 @@ def trouver_conditions(nom_fichier, nom_parc):
 def main():
 
     #url_fichier = 'https://www.normandcyr.com/data/donnees_skidefond.json'
-    nom_fichier = 'donnees_skidefond2.json'
+    nom_fichier = 'donnees_skidefond.json'
 
-    nom_parc = 'Mont-Royal'
+    nom_parc = 'Parc du Mont-Royal'
 
     conditions = trouver_conditions(nom_fichier, nom_parc)
+    print(nom_parc)
     print(conditions)
 
 if __name__ == '__main__':

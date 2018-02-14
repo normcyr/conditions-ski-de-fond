@@ -90,7 +90,7 @@ def soupe_montroyal(requete):
     conditions = {'État des pistes de ski' : section_etat[0].text,
                   'Qualité de la neige' : section_etat[9].text,
                   'Enneigement' : section_etat[10].text,
-                  'Commentaires' : pistes[3].text
+                  #'Commentaires' : pistes[3].text
                   }
 
     return(nom_parc, conditions)
@@ -213,22 +213,23 @@ def enregistrer_donnees(nom_parc, conditions, resultats):
 
     return(resultats)
 
-def creer_fichier_sortie(resultats):
-
-    # créer un objet en format json
-    #donnees = json.dumps(resultats)
+def creer_fichier_sortie(resultats, fichier_sortie):
 
     # sauvegarder fichier json
-    with open('donnees_skidefond.json', 'w', encoding='utf8') as fichier_sortie:
+    with open(fichier_sortie, 'w', encoding='utf8') as fichier_sortie:
         json.dump(resultats, fichier_sortie)
 
 def main():
 
     url_base = 'http://ville.montreal.qc.ca/portal/page?_pageid=7377,94551572&_dad=portal&_schema=PORTAL'
-    fichier_liste_parcs = 'liste_parcs.yml'
+
+    # changer pour base répertoire actuelle
+    base_dir = '/home/norm/Softwares/git/conditions-ski-de-fond/'
+
+    fichier_liste_parcs = base_dir + 'liste_parcs.yml'
     liste_id_parcs = []
     resultats = {}
-    #resultats['parc'] = []
+    fichier_sortie = base_dir + 'donnees_skidefond.json'
 
     # numéro de l'activité pour le ski de fond sur le site de la Ville de Montréal
     num_activite = 7
@@ -246,7 +247,7 @@ def main():
         nom_parc, conditions = faire_requete(id_parc, num_activite, url_base)
         resultats = enregistrer_donnees(nom_parc, conditions, resultats)
 
-    creer_fichier_sortie(resultats)
+    creer_fichier_sortie(resultats, fichier_sortie)
 
 
 if __name__ == '__main__':

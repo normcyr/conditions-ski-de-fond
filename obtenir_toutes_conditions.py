@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 '''
 Extraire information sur les conditions de ski de fond dans les parcs de l'île de Montréal

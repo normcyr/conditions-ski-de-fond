@@ -87,7 +87,8 @@ def soupe_montroyal(requete):
 
     section_etat = section_info.find_all('h3')
 
-    conditions = {'État des pistes de ski' : section_etat[0].text,
+    conditions = {'Mise à jour' : pistes[0].text[22:],
+                  'État des pistes de ski' : section_etat[0].text,
                   'Qualité de la neige' : section_etat[9].text,
                   'Enneigement' : section_etat[10].text,
                   #'Commentaires' : pistes[3].text
@@ -109,7 +110,8 @@ def soupe_boisliesse(requete):
 
     section_etat = section_info.find_all('h3')
 
-    conditions = {'État des pistes de ski' : section_etat[0].text,
+    conditions = {'Mise à jour' : pistes[0].text[22:],
+                  'État des pistes de ski' : section_etat[0].text,
                   'Qualité de la neige' : section_etat[4].text,
                   'Enneigement' : section_etat[5].text,
                   'Commentaires' : pistes[3].text
@@ -131,7 +133,8 @@ def soupe_ilebizard(requete):
 
     section_etat = section_info.find_all('h3')
 
-    conditions = {'État des pistes de ski' : section_etat[0].text,
+    conditions = {'Mise à jour' : pistes[0].text[22:],
+                  'État des pistes de ski' : section_etat[0].text,
                   'Qualité de la neige' : section_etat[3].text,
                   'Enneigement' : section_etat[4].text,
                   'Commentaires' : pistes[3].text
@@ -153,7 +156,8 @@ def soupe_capstjacques(requete):
 
     section_etat = section_info.find_all('h3')
 
-    conditions = {'État des pistes de ski' : section_etat[0].text,
+    conditions = {'Mise à jour' : pistes[0].text[22:],
+                  'État des pistes de ski' : section_etat[0].text,
                   'Qualité de la neige' : section_etat[4].text,
                   'Enneigement' : section_etat[5].text,
                   'Commentaires' : pistes[4].text
@@ -175,7 +179,8 @@ def soupe_visitation(requete):
 
     section_etat = section_info.find_all('h3')
 
-    conditions = {'État des pistes de ski' : section_etat[0].text,
+    conditions = {'Mise à jour' : pistes[0].text[22:],
+                  'État des pistes de ski' : section_etat[0].text,
                   'Qualité de la neige' : section_etat[3].text,
                   'Enneigement' : section_etat[4].text,
                   'Commentaires' : pistes[3].text
@@ -197,7 +202,8 @@ def soupe_pointeprairie(requete):
 
     section_etat = section_info.find_all('h3')
 
-    conditions = {'État des pistes de ski' : section_etat[0].text,
+    conditions = {'Mise à jour' : pistes[0].text[22:],
+                  'État des pistes de ski' : section_etat[0].text,
                   'Qualité de la neige' : section_etat[4].text,
                   'Enneigement' : section_etat[5].text,
                   'Commentaires' : pistes[3].text
@@ -237,10 +243,14 @@ def main():
     # charger information sur les parcs
     liste_parcs = charger_liste(fichier_liste_parcs)
 
+
     # créer liste des numéros ('id') des parcs
     for parc in range(len(liste_parcs)):
         for details in liste_parcs[parc]:
             liste_id_parcs.append(liste_parcs[parc][details]['id'])
+
+    # pour déboggage initial, utiliser seulement le Mont-Royal
+    #liste_id_parcs = [81]
 
     # pour chaque parc, extraire les données sur les conditions de ski
     for id_parc in liste_id_parcs:
